@@ -1,0 +1,200 @@
+\documentclass[a4paper,12pt] {exam}
+\usepackage{listings}
+\lstset{language=C,numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+
+\begin{document}
+\begin{center}
+\fbox{\fbox{\parbox{5.5in}{\centering
+Esempio Prova scritta Programmazione I - Online Version}}}
+\end{center}
+\vspace{0.1in}
+\hbox to \textwidth{Nome e Cognome:\enspace\hrulefill}
+\hbox to \textwidth{Matricola:\enspace\hrulefill}
+\begin{questions}
+
+\question \fbox{1 punto} Dato il seguente codice, trovare ,se ci sono, possibili errori nelle dichiarazioni delle variabili.
+\vspace{0.1in}
+\begin{lstlisting}
+int main (void) {
+
+float p* = NULL;
+int a = 1;
+char @mail = 'M';
+double A = 1,5;
+int b = 0;
+long int b = 0;
+}
+\end{lstlisting}
+
+
+\question \fbox{1 punto} Definite successivamente le variabili \textit{x} e \textit{y}, la stampa di \textit{ERROR!} viene eseguita correttamente?
+\vspace{0.1in}
+\begin{lstlisting}
+unsigned short x = 5;
+int y = -1;
+if (x > y)
+	printf("ERROR!\n");
+\end{lstlisting}
+
+\question \fbox{1 punti} Data la seguente porzione di codice, specificare le conversioni di tipo.
+\begin{lstlisting}
+float f = 10L + 0x1f;
+char s = '$';
+unsigned int u = 1.5 + s;
+int d = f * s;
+	
+\end{lstlisting}
+
+\question \fbox{1 punto} Dato il seguente codice, quale sarà il valore della stampa della printf?
+\begin{lstlisting}
+	int main(){
+		int a = 0;
+		double d = 10.21;
+		printf("%lu", sizeof(a + d));
+		return 0;
+	}
+	
+\end{lstlisting}
+\pagebreak
+\question \fbox{2 punti} Quale sarà l'output del seguente codice C ?
+\begin{lstlisting}
+#include<stdio.h>
+#define MAX(a,b,c) (a>b ? a>c ? a: c: b>c ? b : c)
+	
+int main() {
+	int x;
+	x = MAX(3+2, 2+7, 4+6);
+	printf("%d", x);
+	return 0;
+}
+\end{lstlisting}
+
+\question \fbox{2 punti} Data la breve porzione di codice, la stampa viene eseguita correttamente? Perchè?
+\begin{lstlisting}
+	#include<stdio.h>
+	main()
+	{
+		printf("%d",strcmp("strcmp()","strcmp()"));
+	}
+\end{lstlisting}
+
+\question \fbox{2 punti} Dire quali tra i seguenti assegnamenti sono legali e quali sono illegali (cioè che portano a warning/errori).
+\begin{lstlisting}
+int *i;
+float *f;
+void *v;
+i = ( double *) 4;
+i = v = f;
+i = f;
+v = 1;
+i = 5;
+f = ( float *) f;
+\end{lstlisting}
+
+\question \fbox{2 punti} Dato il seguente codice, cosa rappresenta "pippo"?
+\begin{lstlisting}
+	#include<stdio.h>
+	
+	int main () {
+		
+		typedef char (*(*aaa[3])())[10];
+		aaa pippo
+		return 0;
+	}
+	
+\end{lstlisting}
+\pagebreak[5]
+\question \fbox{2 punti} Descrivere brevemente cosa esegue il seguente programma
+\begin{lstlisting}
+	int main() {		
+		
+		fork();
+		fork();
+		printf("Hello world\n");
+	}
+\end{lstlisting}
+
+\question \fbox{2 punti} Considerando la porzione di programma, cosa verrà stampato dalla \textit{printf}?
+
+\begin{lstlisting}
+	int v[] = {30, 25, 12, 15, 4}, x = v[0], i;
+	for (i = 1; i < 4; i++)
+	if(v[i] < x) x = v[i];
+	printf("%d", x);
+	return 0;
+\end{lstlisting}
+
+\question \fbox{2 punti} Dato il seguento programma, quante volte verrà stampata la scritta "Hello"?
+\begin{lstlisting}
+	int main () {
+		
+		int x;		
+		for(x=-1; x<=20; x++)int i;
+		{
+			if(x < 10)
+			continue;
+			else
+			break;
+			printf("Hello");
+		}
+	}
+\end{lstlisting}
+\pagebreak
+\question \fbox{3 punti} Qual'è l'output del programma?
+\begin{lstlisting}
+	#include<stdio.h>
+	int main()
+	{
+		const int x=5;
+		const int *ptrx;
+		ptrx = &x;
+		*ptrx = 10;
+		printf("%d\n", x);
+		return 0;
+	}
+\end{lstlisting}
+\pagebreak[5]
+\question \fbox{3 punti} Data la seguente porzione di codice, quante volte viene stampato \textit{"Hello World!"}? Quale saranno il valore di \textit{a} e \textit{b} nell'ultima stampa?
+\begin{lstlisting}
+	int main()
+	{
+		int a = 0x11 - 3;
+		int c=0;
+		while ((a-=1)? a++:a--) {
+			c+=1;
+			a-=1;
+			printf("Hello World! %d\n",c);
+		}
+		int b = 0xaa;
+		b+= a || a --;
+		printf("%d %d\n", a, b);
+	}
+\end{lstlisting}
+
+\question \fbox{3 punti} Data il seguente programma, segnalare l'errore nel codice.
+\begin{lstlisting}
+	int main() {
+		
+		struct emp {
+		char name[25]; int age;};
+		struct emp e;
+		e.name = "Pippo";
+		e.age = 18;
+		printf("%s %d", e.name, e.age);
+		return 0;
+	}
+\end{lstlisting}
+\question \fbox{3 punti} Il seguente programma esegue la stampa correttamente o da errore di compilazione? Se stampa, quale sarà il suo output?
+\begin{lstlisting}
+	#include<stdio.h>
+	
+	main() { 
+		struct { int x;} var = {5}, *p = &var;
+		
+		printf("%d %d %d",var.x,p->x,(*p).x); 
+	}
+	
+\end{lstlisting}
+\end{questions}
+
+\end{document}
