@@ -105,7 +105,7 @@ let bfs (Grafo arcs) k inizio =
 
 (*bfs con uso di funzione di stampalista interna*)
 let stampabfs (Grafo arcs) k inizio =
-  let rec cerca visitati cricca = function (*la funzione cerca è quella funzione che applicata a [] , o n::resto fa cose*)
+  let rec cerca visitati cricca = function
     [] -> raise NessunaCricca
     | n::resto -> stampalista visitati;
                   stampalista cricca;
