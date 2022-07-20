@@ -100,7 +100,7 @@ let bfs (Grafo arcs) k inizio =
                   else if massimale (Grafo arcs) cricca n
                     then cerca (n::visitati) cricca (resto @ (successori (Grafo arcs) n))
                   else cerca (n::visitati) (n::cricca) (resto @ (successori (Grafo arcs) n))
-  in cerca [] inizio[(List.hd inizio)]
+  in cerca [] [] [inizio]
 ;;
 
 (*bfs con uso di funzione di stampalista interna*)
@@ -122,7 +122,7 @@ let stampabfs (Grafo arcs) k inizio =
 (*'a graph -> int -> 'a -> 'a list*)
 let cerca_cricca_da (Grafo arcs) k inizio =
   if k < 2 then raise ErroreDimensione
-  else stampabfs (Grafo arcs) k [inizio]
+  else stampabfs (Grafo arcs) k inizio
 ;;
 
 (*cerca_bfs prende in input un grafo, un valore int k, e una lista di nodi;
@@ -131,7 +131,7 @@ let cerca_cricca_da (Grafo arcs) k inizio =
 (*'a graph -> int -> 'a list -> 'a list*)
 let rec cerca_bfs grafo k = function
   [] -> raise NessunaCricca
-  | n::resto -> try List.rev (stampabfs grafo k [n])
+  | n::resto -> try List.rev (stampabfs grafo k n)
                 with NessunaCricca -> cerca_bfs grafo k resto
 ;;
 
